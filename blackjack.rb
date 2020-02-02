@@ -74,13 +74,20 @@ class Blackjack
   end
 
   def set_result
-
+    if @player_hand.get_value > 21
+      @result = "Player busts!"
+    elsif @dealer_hand.get_value > 21
+      @result = "Dealer busts!"
+    elsif @current_gamer == 'Dealer'
+      if @player_hand.get_value == @dealer_hand.get_value
+        @result = "It is a tie!"
+      elsif @player_hand.get_value > @dealer_hand.get_value
+        @result = "Player wins!"
+      elsif @player_hand.get_value < @dealer_hand.get_value
+        @result = "Dealer wins!"
+      end
+    end
   end
-
-  # def to_s
-  #   puts "Player has #{@player_hand.get_value}"
-  #   puts "Dealer has #{@dealer_hand.get_value}"
-  # end
 
   private
 
