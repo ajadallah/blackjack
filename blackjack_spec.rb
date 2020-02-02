@@ -177,4 +177,16 @@ RSpec.describe Blackjack do
       expect(@blackjack.dealer_hand.dealt_cards.first.show).to eq(true)
     end
   end
+
+  describe "Showing hands" do
+    before do
+      @blackjack = Blackjack.new(SUITS, RANKS)
+      @blackjack.deal
+    end
+
+    it "Should return the gamer's hands" do
+      expect(@blackjack.show_hands).to match(/Player's hand:/)
+      expect(@blackjack.show_hands).to match(/Dealer's hand:/)
+    end
+  end
 end
